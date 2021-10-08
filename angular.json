@@ -73,6 +73,9 @@
           "configurations": {
             "production": {
               "browserTarget": "covid-mashup:build:production"
+            },
+            "development": {
+              "browserTarget": "covid-mashup:build:development",
             }
           }
         },
