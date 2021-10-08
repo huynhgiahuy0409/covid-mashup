@@ -1,12 +1,18 @@
 {
   "name": "covid-mashup",
   "version": "0.0.0",
+  "engines": {
+    "node": "16.2.0",
+    "npm": "7.13.0"
+  },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "node server.js",
+    "build": "ng build --configuration production",
+    "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
+    "heroku-postbuild": "ng build",
     "e2e": "ng e2e"
   },
   "private": true,
