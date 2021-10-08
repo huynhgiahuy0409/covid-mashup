@@ -1,0 +1,13 @@
+<mat-card class="d-flex flex-column h-100">
+    <mat-card-content class="d-fex flex-column"
+                      style="flex-grow: 1;">
+        <highcharts-chart *ngIf="chartOptions$ | async as chartOptions"
+                          id="container"
+                          [Highcharts]="Highcharts"
+                          [oneToOne]="true"
+                          [constructorType]="'chart'"
+                          [options]="chartOptions"
+                          style="width: 100%; height: 100%; display: block;">
+        </highcharts-chart>
+    </mat-card-content>
+</mat-card>

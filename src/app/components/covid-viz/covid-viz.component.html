@@ -1,0 +1,35 @@
+<div class="p-2"
+     style="height: calc(100vh - 105px)">
+    <div *ngIf="singleDateCovidData$ | async as singleDateCovidData else loadingTpl"
+         class="row h-100 g-0">
+        <form [formGroup]="dataTypeForm"
+              style="margin-bottom: -10px;">
+            <mat-form-field class="w-100"
+                            appearance="fill">
+                <mat-label>Data type</mat-label>
+                <mat-select formControlName="dataType">
+                    <mat-option *ngFor="let dataType of dataTypeSltItems"
+                                [value]="dataType.value">
+                        {{dataType.label}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+        <div class="col-8 px-1 h-100">
+            <app-world-map-viz class="h-100"
+                               [singleDateCovidData]="singleDateCovidData">
+            </app-world-map-viz>
+        </div>
+        <div class="col-4 px-1 h-100">
+            <app-bar-chart-viz class="h-100"
+                               [singleDateCovidData]="singleDateCovidData">
+            </app-bar-chart-viz>
+        </div>
+    </div>
+</div>
+
+<ng-template #loadingTpl>
+    <div class="d-flex justify-content-center align-items-center h-100">
+        <mat-spinner [diameter]="50"></mat-spinner>
+    </div>
+</ng-template>

@@ -1,0 +1,35 @@
+<div class="p-2"
+     style="height: calc(100vh - 105px)">
+    <div *ngIf="vaccinationData$ | async as vaccinationData else loadingTpl"
+         class="row h-100 g-0">
+        <form [formGroup]="vaccineTypeForm"
+              style="margin-bottom: -10px;">
+            <mat-form-field class="w-100"
+                            appearance="fill">
+                <mat-label>Vaccine type</mat-label>
+                <mat-select formControlName="vaccineType">
+                    <mat-option *ngFor="let vaccineType of vaccineTypeSltItems"
+                                [value]="vaccineType.value">
+                        {{vaccineType.label}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+        <div class="col-8 px-1 h-100">
+            <app-world-map-vacine-viz class="h-100"
+                               [vaccinationData]="vaccinationData">
+            </app-world-map-vacine-viz>
+        </div>
+        <div class="col-4 px-1 h-100">
+            <!-- <app-bar-chart-viz class="h-100"
+                               [vaccinationData]="vaccinationData">
+            </app-bar-chart-viz> -->
+        </div>
+    </div>
+</div>
+
+<ng-template #loadingTpl>
+    <div class="d-flex justify-content-center align-items-center h-100">
+        <mat-spinner [diameter]="50"></mat-spinner>
+    </div>
+</ng-template>
